@@ -21,6 +21,3 @@ solcjs ./contracts/TransferVerifier.sol --bin  --abi --optimize -o ./build/contr
 
 solcjs ./contracts/HideToken.sol --bin  --abi --optimize -o ./build/contracts/bin
 ./abigen/abigen --bin ./build/contracts/bin/contracts_HideToken_sol_HideToken.bin --abi ./build/contracts/bin/contracts_HideToken_sol_HideToken.abi --pkg contracts --type HideToken --out ./core/contracts/HideToken.go
-
-# abiGen MiMCSponge
-# ./abigen/abigen --bin ./build/contracts/bin/MIMCSponge.bin --abi ./build/contracts/bin/MIMCSponge.abi --pkg contracts --type MIMCSponge --out ./core/contracts/MIMCSponge.go

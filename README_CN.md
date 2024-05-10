@@ -8,14 +8,14 @@
 其主要的流程是在交易中，由转账发起者向链上提交自己的余额变动证明和交易额度的加密信息，
 转账的接收方监听到交易后，获取加密信息，解密后生成自己的余额变动证明向链上提交，确认交易。
 在这个过程中转账发起者也可以撤回交易。  
-合约的源码位于 https://github.com/UDPN/zk-token/tree/main/contracts ，
-我们在ETH的Sepolia测试网络部署了合约，地址是`0xe52e1445dd703d2Bb120423DE49E83D03cF0de8C`。
+合约的源码位于 `contracts`文件夹中 ，零知识证明电路文件位于`circuits`文件夹中。
+我们在`Sepolia`测试网络部署了合约，地址是`0xe52e1445dd703d2Bb120423DE49E83D03cF0de8C`。
 可以在[这里](https://sepolia.etherscan.io/address/0xe52e1445dd703d2bb120423de49e83d03cf0de8c) 看到详细信息。
-你可以在[这里](https://github.com/UDPN/zk-token) 获取SDK并参考下面的说明尝试调用该合约。
+你可以在[这里](https://github.com/UDPN/zk-token) 获取Go语言的SDK并参考下面的说明尝试调用该合约。
 
 ## 调用合约
 1. 首先，你需要获取零知识证明电路的编译文件，他们包含 wasm、zkey和vkey文件。
-你可以从代码仓库的`build`文件夹中获取这些。如果你想学习zkSNARK的详细知识，可以在[snarkjs](https://github.com/iden3/snarkjs) 获取帮助。
+你可以从代码仓库的`build`文件夹中获取这些。在初始化调用Client时，需要配置这个文件内容。如果你想学习zkSNARK的详细知识，可以在[snarkjs](https://github.com/iden3/snarkjs)和[circom](https://docs.circom.io/)获取帮助。
 2. 在你的Go项目中引用SDK，并准备开始调用合约；
 ```shell
 go get github.com/UDPN/zk-token
@@ -114,7 +114,7 @@ require.NoError(t, err)
 
 balance = input.NewBalance()
 ```
-9. 当你监听到有账户向你转账时，可以通过下面的代码确认交易，并且收取余额。
+9. 当你监听到有账户向你转账时，可以通过下面的代码确认交易，并且收取余额。交易将在1000个块后过期，必须在此之前确认收款。
 ```go
 fromAddr :=common.HexToAddress("0x00000102")
 input, txId, err = cli.ConfirmTransferToken(fromAddr, balance, balanceSecret)
