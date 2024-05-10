@@ -1,0 +1,7 @@
+/.idea/
+/.vscode/
+*.exe
+/main
+/tools/main
+/bin/
+/core/testdata
