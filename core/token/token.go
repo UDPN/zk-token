@@ -437,9 +437,7 @@ func fromValueBytes(valueBytes []byte) (*big.Int, *big.Int) {
 }
 
 func RandBigInt() *big.Int {
-
 	randomBytes := make([]byte, 32)
-	// 使用加密安全的随机数生成器填充字节切片
 	io.ReadFull(rand.Reader, randomBytes)
 	return new(big.Int).SetBytes(randomBytes)
 }

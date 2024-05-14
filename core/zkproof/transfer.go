@@ -100,9 +100,6 @@ func (i *TransferInput) MarshalJSON() ([]byte, error) {
     "valueSecret":"%s",
     "add":"%s"
 }`
-	//,
-	//    "balanceHash":"%s",
-	//    "valueHash":"%s"
 	jb := fmt.Sprintf(inputFormat,
 		i.Balance.String(),
 		i.BalanceSecret.String(),

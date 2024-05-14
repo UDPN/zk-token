@@ -181,15 +181,15 @@ func TestCheckBalance(t *testing.T) {
 	cli, err := NewTokenCli(NodeUrl, User1_HexKey, common.HexToAddress(TokenAddress))
 	require.NoError(t, err)
 
-	addr := common.HexToAddress(User2_address)
-	ok, err := cli.CheckBalance(addr, new(big.Int).SetUint64(10), KeySecret)
+	addr := common.HexToAddress(User1_address)
+	ok, err := cli.CheckBalance(addr, new(big.Int).SetUint64(90), KeySecret)
 	require.NoError(t, err)
 	require.Equal(t, ok, true)
 }
 
 func TestTransferToken(t *testing.T) {
 	fromKey := User1_HexKey
-	fromBalance := new(big.Int).SetInt64(100)
+	fromBalance := new(big.Int).SetInt64(90)
 	fromBalanceSecret := KeySecret
 
 	toAddress := common.HexToAddress(User2_address)
@@ -245,7 +245,7 @@ func TestConfirmTransferToken(t *testing.T) {
 
 func TestCancelTransferToken(t *testing.T) {
 	fromKey := User1_HexKey
-	fromBalance := new(big.Int).SetInt64(70)
+	fromBalance := new(big.Int).SetInt64(80)
 	fromBalanceSecret := KeySecret
 
 	toAddress := common.HexToAddress(User2_address)

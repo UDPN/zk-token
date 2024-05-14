@@ -24,7 +24,6 @@ func ReadFile(path string) ([]byte, error) {
 
 }
 
-// cover true 覆盖文件，false 检查是否已存在
 func WriteFile(data []byte, path string, cover bool) error {
 
 	if !cover {
