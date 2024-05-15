@@ -418,10 +418,6 @@ func BalanceHash(balance, secret *big.Int) (*big.Int, error) {
 	return h, nil
 }
 
-func TransferProof(balance, balanceSecret, value, valueSecret *big.Int) {
-
-}
-
 func toValueBytes(value, valueSecret *big.Int) []byte {
 	var valueBytes [64]byte
 	vb := value.Bytes()
