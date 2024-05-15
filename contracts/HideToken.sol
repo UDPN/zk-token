@@ -72,7 +72,6 @@ contract HideToken is Ownable {
 
     event RegisterWallet(address indexed sender);
 
-    // 钱包注册
     function registerWallet(
         ZKProof calldata proof,
         uint256[3] calldata _pubSignals,
@@ -173,7 +172,6 @@ contract HideToken is Ownable {
         return true;
     }
 
-    // true 交易已经过期，false：交易未过期
     function _checkExpireTransfer(address from,address to) internal view returns(bool) {
         TransferInfo storage info = _transfers[from][to];
         return info.state != TransferState.Pending || info.expiredBlockNumber < block.number;
@@ -245,7 +243,6 @@ contract HideToken is Ownable {
         return true;
     }
 
-    // 转账
     function _transfer(
         address from,
         address to,
